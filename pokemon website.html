@@ -10,43 +10,54 @@
 <body>
     <div class="wrapper">
         <!-- searchbox -->
-        <div id="searchbox">
-            <img src="images/search.svg" height="16px" alt="">
-            <input type="text">
+        <div class="header">
+            <div id="searchbox">
+                <img src="images/search.svg" height="16px" alt="">
+                <input type="text" placeholder="Search for Card here.." id="searchname" onkeypress="runSearch(event, this)">
+            </div>
+            <div id="searchbtn" onclick="fetchResults()">
+                Search for Card!
+            </div>
         </div>
-        <!-- cardwrapper -->
-        <div class="card-wrapper">
-            <!-- card -->
+
+        <!-- card template-->
+        <template id="card-template">
             <div class="card-item">
                 <div class="card-inner">
-                    <div class="card-volume">
+                    <!-- <div class="card-volume">
                         <img src="images/cards.svg" alt=""/><p>35</p>
-                    </div>
+                    </div> -->
                     <div class="card-top">
-                        <img src="images/image 3.png" alt="">
+                        <img src="images/image 3.png" alt="" id="cardimage">
                         <div class="card-name"> Name | Rarity </div>
                     </div>
                     <div class="card-bottom">
                         <div class="current">
                             <p class="period">Current</p>
                             <div class="prices">
-                                <p class="highest">Highest <br> ₹3000</p>
-                                <p class="lowest">Lowest <br> ₹3000</p>
+                                <p class="price redt" id="averagep">Average <br> ₹3000</p>
+                                <p class="price greent" id="lowestp">Lowest <br> ₹3000</p>
                             </div>
                         </div>
 
-                        <div class="alltime">
-                            <p class="period">All-Time</p>
+                        <div class="suggestions">
+                            <p class="period">Suggestions</p>
                             <div class="prices">
-                                <p class="highest">Highest <br> ₹3000</p>
-                                <p class="lowest">Lowest <br> ₹3000</p>
+                                <p class="price redt" id="trendp">Trend <br> ₹3000</p>
+                                <p class="price greent" id="volumep">Volume <br> 200</p>
                             </div>
                         </div>
                     </div>        
                 </div>
             </div>
+        </template>
+
+        <!-- cardwrapper -->
+        <div class="card-wrapper">
 
         </div>
     </div>
+
+    <script src="index.js"></script>
 </body>
 </html>

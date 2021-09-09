@@ -14,9 +14,31 @@ body{
 }
 
 .wrapper{
-    margin: 40px;
+    margin: 40px 40px;
     width: 100%;
 }
+
+.header{
+    display: flex;
+    align-items: center;
+}
+#searchbtn{
+    height: 30px;
+    width: max-content;
+    margin-left: 15px;
+    color: #E21616;
+    transition: all 0.1s ease-in-out;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#searchbtn:hover{
+    color: white;
+}
+#searchbtn:active{
+    color: rgb(131, 131, 131);
+}
+
 
 #searchbox{
     background: none;
@@ -48,6 +70,8 @@ body{
 .wrapper .card-wrapper{
     margin-top: 40px;
     display: flex;
+    column-gap: 40px;
+    row-gap: 40px;
     flex-wrap: wrap;
 }
 
@@ -90,6 +114,7 @@ body{
 .card-top img{
     margin-top: 25px;
     margin-bottom: 15px;
+    height: 200px;
 }
 
 .card-top .card-name{
@@ -143,9 +168,9 @@ text-align: center;
     margin-bottom: 10px;
     margin-left: 20px;
 }
-.highest{
-    color: rgb(247, 26, 26);
+.redt{
+    color: rgb(255, 185, 185);
 }
-.lowest{
-    color: rgb(26, 219, 90);
+.greent{
+    color: rgb(143, 250, 179);
 }
