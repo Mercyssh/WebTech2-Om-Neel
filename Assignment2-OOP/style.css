@@ -27,3 +27,16 @@
     top: 50%;
     transform: translate(-50%, -50%);
 }
+
+.employeeform{
+    position: fixed;
+    right: 50%;
+    transform: translate(50%, 0%);
+    transition: transform .5s, right .5s;
+}
+
+.offscreenright{
+    right: -5%;
+    transform: translate(100%, 0%);
+    transition: transform .5s, right .5s;
+}
