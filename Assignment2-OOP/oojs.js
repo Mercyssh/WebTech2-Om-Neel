@@ -127,19 +127,22 @@ function openManagerForm(){
     newEmployeeDropdown.classList.add("disabled");
 } */
 
-// Universal Open Form Function
+// Universal Open Form Functions
 function openForm(formid){
     document.querySelector(formid).classList.remove("offscreenright");
     document.querySelector("#newemployeedropdown").classList.add("disabled");
+    document.querySelector("#employeelist").classList.add("offscreenleft");
 }
-
 function closeForms(){
+    populateCards();
 
     // Get all forms
     const developerForm = document.querySelector("#developerform");
     const servicerForm = document.querySelector("#servicerform");
     const managerForm = document.querySelector("#managerform");
     const newEmployeeDropdown = document.querySelector("#newemployeedropdown");
+    document.querySelector("#employeelist").classList.remove("offscreenleft");
+
 
     // Hide em all
     developerForm.classList.add("offscreenright");
@@ -151,39 +154,81 @@ function closeForms(){
     developerForm.reset();
     servicerForm.reset();
     managerForm.reset();
+
 }
 
-//SAVE FUNCTIONS
+//SAVE & UPDATE FUNCTIONS
 function addDeveloper() {
+    //constructor(id, name, email, dob, qualification, yoe, manager)
+
     const ls = window.localStorage;
+    const firstname = document.querySelector("#developerform #firstname").value;
+    const lastname = document.querySelector("#developerform #lastname").value;
+    const dob = document.querySelector("#developerform #dateofbirth").value;
+    const email = document.querySelector("#developerform #email").value;
+    const employeeid = document.querySelector("#developerform #employeeid").value;
+    const qualification = document.querySelector("#developerform #qualification").value;
+    const yoe = document.querySelector("#developerform #yoe").value; 
+    const selectmanager = document.querySelector("#developerform #selectmanager");
 
-    //Get DB and parse it into an object
-    let db = ls.getItem('db');
-    db = JSON.parse(db);
+    //Validation and Update
+    if(firstname&&lastname&&employeeid&&dob&&email&&qualification&&yoe&&selectmanager.value!=0){
 
-    //Update DB
-    db.developers.push(obj);
+        var tempmanager=selectmanager.options[selectmanager.selectedIndex].text;
+        const obj = new Developer(employeeid, firstname+" "+lastname, email, dob, qualification, yoe, tempmanager);
 
-    //stringify it and save DB
-    db = JSON.stringify(db);
-    ls.setItem('db', db);
+        //Get DB
+        let db = ls.getItem('db');
+        db = JSON.parse(db);
 
-    //Go back to Main Screen
-    openMainScreen();
+        //Update DB
+        db.developers.push(obj);
+
+        //Set DB
+        db = JSON.stringify(db);
+        ls.setItem('db', db);
+
+        closeForms();
+    } else {
+        console.log("invalid");
+    }
 }
 
 function addServicer() {
+    //constructor(id, name, email, dob, recommendation, manager)
     const ls = window.localStorage;
-    const firstname = document.querySelector("#managerform #firstname").value;
-    const lastname = document.querySelector("#managerform #lastname").value;
-    const dob = document.querySelector("#managerform #dateofbirth").value;
-    const email = document.querySelector("#managerform #email").value;
-    const employeeid = document.querySelector("#managerform #employeeid").value;
-    const qualificaiton = document.querySelector("#managerform #qualification").value;
-    const team = document.querySelector("#managerform #selectteam").value;
+    const firstname = document.querySelector("#servicerform #firstname").value;
+    const lastname = document.querySelector("#servicerform #lastname").value;
+    const dob = document.querySelector("#servicerform #dateofbirth").value;
+    const email = document.querySelector("#servicerform #email").value;
+    const employeeid = document.querySelector("#servicerform #employeeid").value;
+    let recommendation = document.querySelector("#servicerform #recommendation").value;
+    const selectmanager = document.querySelector("#servicerform #selectmanager");
 
-    //Go back to Main Screen
-    openMainScreen();
+    //Validation and Update
+    if(firstname&&lastname&&dob&&email&&employeeid&&selectmanager.value!=0){
+        
+        //Get selected Manager Name & Set empty recommendation
+        if(!recommendation) recommendation="";
+        var tempmanager=selectmanager.options[selectmanager.selectedIndex].text;
+        const obj = new Servicer(employeeid, firstname+" "+lastname, email, dob, recommendation, tempmanager);
+        // console.log(obj);
+
+        //Get DB
+        let db = ls.getItem('db');
+        db = JSON.parse(db);
+
+        //Update DB
+        db.servicers.push(obj);
+
+        //Set DB
+        db = JSON.stringify(db);
+        ls.setItem('db', db);
+
+        closeForms();        
+    } else {
+        console.log("invalid!");
+    }
 }
 
 function addManager() {
@@ -195,15 +240,15 @@ function addManager() {
     const dob = document.querySelector("#managerform #dateofbirth").value;
     const email = document.querySelector("#managerform #email").value;
     const employeeid = document.querySelector("#managerform #employeeid").value;
-    const qualificaiton = document.querySelector("#managerform #qualification").value;
+    const qualification = document.querySelector("#managerform #qualification").value;
     const team = document.querySelector("#managerform #selectteam").value;
     const selectmanager1 = document.querySelectorAll("#developerform #selectmanager");
     const selectmanager2 = document.querySelectorAll("#servicerform #selectmanager");
 
     //Validation & Update DB
-    if(firstname&&lastname&&dob&&email&&employeeid&&qualificaiton&&(team==1||team==2)){
+    if(firstname&&lastname&&dob&&email&&employeeid&&qualification&&(team==1||team==2)){
         //Create obj - constructor(id, name, email, dob, qualification, team)
-        const obj = new Manager(employeeid, firstname+" "+lastname, email, dob, qualificaiton, team==1?"Technology":"Service");
+        const obj = new Manager(employeeid, firstname+" "+lastname, email, dob, qualification, team==1?"Technology":"Service");
 
         //Get DB
         let db = ls.getItem('db');
@@ -215,15 +260,14 @@ function addManager() {
         else
             db.managers.service.push(obj);
 
-        updateManagerList();
-
-        console.log(selectmanager1);
-        console.log(selectmanager2);
+        // console.log(selectmanager1);
+        // console.log(selectmanager2);
 
         //stringify it and save DB
         db = JSON.stringify(db);
         ls.setItem('db', db);
 
+        updateManagerList();
 
         //Go back to Main Screen
         closeForms();
@@ -239,24 +283,103 @@ function updateManagerList(){
     const selectmanager1 = document.querySelector("#developerform #selectmanager");
     const selectmanager2 = document.querySelector("#servicerform #selectmanager");
 
-    console.log(selectmanager1);
-
+    //Get DB
     const ls = window.localStorage;
     db = ls.getItem('db');
     db = JSON.parse(db);
 
     //Update DOM
-    selectmanager1.innerHTML="<option selected>Unappointed</option>";
+    selectmanager1.innerHTML='<option value="0" selected>Unappointed</option>';
     for(let i=0; i<db.managers.technology.length; i++){
         selectmanager1.innerHTML+=`<option value="${i+1}">${db.managers.technology[i].name}</option>`;
     }
-    selectmanager2.innerHTML="<option selected>Unappointed</option>";
+    selectmanager2.innerHTML='<option value="0" selected>Unappointed</option>';
     for(let i=0; i<db.managers.service.length; i++){
         selectmanager2.innerHTML+=`<option value="${i+1}">${db.managers.service[i].name}</option>`
     }
 
-    console.log(selectmanager1);
-    console.log(selectmanager2);
+}
+
+function populateCards(){
+    //Get Elements
+    const employeelist = document.querySelector("#employeelist .row");
+    const developercardtemplate = document.querySelector("#developercardtemplate");
+    const servicercardtemplate = document.querySelector("#servicercardtemplate");
+    const managercardtemplate = document.querySelector("#managercardtemplate");
+
+    //Get Database
+    const ls = window.localStorage;
+    let db = ls.getItem('db');
+    db = JSON.parse(db);
+
+    //Populate Developers
+    for(let i=0; i<db.developers.length; i++){
+        var temp = developercardtemplate.content.cloneNode(true);
+        temp.querySelector(".employeename").innerHTML=db.developers[i].name;
+        temp.querySelector(".employeeid").innerHTML=`Developer | #${db.developers[i].id}`
+        temp.querySelector(".employeemanager").innerHTML=db.developers[i].manager;
+        temp.querySelector(".employeequalification").innerHTML=db.developers[i].qualification;
+        temp.querySelector(".yoe").innerHTML=db.developers[i].yoe;
+        temp.querySelector(".employeeemail").innerHTML=db.developers[i].email;
+        temp.querySelector("abbr").title=db.developers[i].passcode;
+
+        // var tempdob = db.developers[i].dob.getDate()+"/"+(db.developers[i].dob.getMonth()+1)+"/"+db.developers[i].dob.getFullYear();
+        var tempdob = new Date(db.developers[i].dob);
+        tempdob = tempdob.getDate()+"/"+(tempdob.getMonth()+1)+"/"+tempdob.getFullYear();
+        temp.querySelector(".employeedob").innerHTML=tempdob;
+
+        employeelist.appendChild(temp);
+    }
+
+    //Populate Servicers
+    for(let i=0; i<db.servicers.length; i++){
+        var temp = servicercardtemplate.content.cloneNode(true);
+        temp.querySelector(".employeename").innerHTML=db.servicers[i].name;
+        temp.querySelector(".employeeid").innerHTML=`Servicer | #${db.servicers[i].id}`
+        temp.querySelector(".employeemanager").innerHTML=db.servicers[i].manager;
+        temp.querySelector(".employeerecommendation").innerHTML= db.servicers[i].recommendation||"NaN";
+        temp.querySelector(".employeeemail").innerHTML=db.servicers[i].email;
+
+        // var tempdob = db.developers[i].dob.getDate()+"/"+(db.developers[i].dob.getMonth()+1)+"/"+db.developers[i].dob.getFullYear();
+        var tempdob = new Date(db.servicers[i].dob);
+        tempdob = tempdob.getDate()+"/"+(tempdob.getMonth()+1)+"/"+tempdob.getFullYear();
+        temp.querySelector(".employeedob").innerHTML=tempdob;
+
+        employeelist.appendChild(temp);
+    }
+
+    //Populate Tech-Managers
+    for(let i=0; i<db.managers.technology.length; i++){
+        var temp = managercardtemplate.content.cloneNode(true);
+        temp.querySelector(".employeename").innerHTML=db.managers.technology[i].name;
+        temp.querySelector(".employeeid").innerHTML=`Manager | #${db.managers.technology[i].id}`
+        temp.querySelector(".employeeemail").innerHTML=db.managers.technology[i].email;
+        temp.querySelector(".employeequalification").innerHTML=db.managers.technology[i].qualification;
+        temp.querySelector(".employeeteam").innerHTML=db.managers.technology[i].team;
+
+        // var tempdob = db.developers[i].dob.getDate()+"/"+(db.developers[i].dob.getMonth()+1)+"/"+db.developers[i].dob.getFullYear();
+        var tempdob = new Date(db.managers.technology[i].dob);
+        tempdob = tempdob.getDate()+"/"+(tempdob.getMonth()+1)+"/"+tempdob.getFullYear();
+        temp.querySelector(".employeedob").innerHTML=tempdob;
+
+        employeelist.appendChild(temp);
+    }
+
+    for(let i=0; i<db.managers.service.length; i++){
+        var temp = managercardtemplate.content.cloneNode(true);
+        temp.querySelector(".employeename").innerHTML=db.managers.service[i].name;
+        temp.querySelector(".employeeid").innerHTML=`Manager | #${db.managers.service[i].id}`
+        temp.querySelector(".employeeemail").innerHTML=db.managers.service[i].email;
+        temp.querySelector(".employeequalification").innerHTML=db.managers.service[i].qualification;
+        temp.querySelector(".employeeteam").innerHTML=db.managers.service[i].team;
+
+        // var tempdob = db.developers[i].dob.getDate()+"/"+(db.developers[i].dob.getMonth()+1)+"/"+db.developers[i].dob.getFullYear();
+        var tempdob = new Date(db.managers.service[i].dob);
+        tempdob = tempdob.getDate()+"/"+(tempdob.getMonth()+1)+"/"+tempdob.getFullYear();
+        temp.querySelector(".employeedob").innerHTML=tempdob;
+
+        employeelist.appendChild(temp);
+    }
 }
 
 // Attach Event Handlers
@@ -306,6 +429,9 @@ function updateManagerList(){
         ls.setItem('db', db);
         console.log("Created Empty Database");
     }
-    updateManagerList();
+    console.log(db);
 
+    //Update DOM on load
+    updateManagerList();
+    populateCards();
 })();

@@ -3,6 +3,8 @@
 }
 
 .employeelist{
+    transform: translate(0%, 0%);
+    transition: transform .5s, left .5s;
     padding-top: 30px;
 }
 
@@ -29,14 +31,26 @@
 }
 
 .employeeform{
+    top:50%;
+    width: 600px;
     position: fixed;
     right: 50%;
-    transform: translate(50%, 0%);
+    transform: translate(50%, -50%);
     transition: transform .5s, right .5s;
 }
 
 .offscreenright{
+    top:50%;
     right: -5%;
-    transform: translate(100%, 0%);
+    transform: translate(100%, -50%);
     transition: transform .5s, right .5s;
+}
+
+.offscreenleft{
+    transform: translate(-1000%, 0%);
+    transition: transform .5s, left .5s;
+}
+
+.navborder{
+    border-bottom: solid 4px #0d6efd;
 }

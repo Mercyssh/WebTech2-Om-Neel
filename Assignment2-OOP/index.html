@@ -12,7 +12,7 @@
 
 <body>
     <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top navborder">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold text-muted" href="#">Om & Neel - Employee Database</a>
 
@@ -31,7 +31,7 @@
     </nav>
 
     <!-- Employee Container -->
-    <div class="container-fluid employeelist">
+    <div class="container-fluid employeelist" id="employeelist">
         <div class="row g-4">
 
         </div>
@@ -68,7 +68,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label>Email*</label>
-                        <input type="email" id="dateofbirth" class="form-control mt-2" placeholder="xyz@email.com">
+                        <input type="email" id="email" class="form-control mt-2" placeholder="xyz@email.com">
                     </div>
                 </div>
 
@@ -85,14 +85,14 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="">Qualifications*</label>
-                        <input type="text" class="form-control mt-2" placeholder="Bsc. GTech">
+                        <input type="text" id="qualification" class="form-control mt-2" placeholder="Bsc. GTech">
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="form-group">
                         <label for="yoe">Years of Experience*</label>
-                        <input type="number" class="form-control mt-2" min="0" value="0">
+                        <input type="number" id="yoe" class="form-control mt-2" min="0" value="0">
                     </div>
                 </div>
             </div>
@@ -152,7 +152,7 @@
                 <div class="col">
                     <div class="form-group">
                         <label>Email*</label>
-                        <input type="email" id="dateofbirth" class="form-control mt-2" placeholder="xyz@email.com">
+                        <input type="email" id="email" class="form-control mt-2" placeholder="xyz@email.com">
                     </div>
                 </div>
 
@@ -282,12 +282,12 @@
         <!-- Developer Card -->
         <template id="developercardtemplate">
             <div class="col-auto">
-                <div class="card" style="max-width: 256px;">
+                <div class="card border-success h-100 employeecard" style="width: 256px;">
                     <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
                     <div class="card-header cheader">
                         <div class="delbtn"><img src="assets/delete.svg" alt="" height="14px"></div>
                         <h5 class="card-title employeename">Dhruv Kothari</h5>
-                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                        <p class="card-subtitle text-muted small employeeid">Developer | #392934</p>
                         <abbr title="****" class="text-muted small">passcode</abbr>
                     </div>
                     <div class="card-body">
@@ -296,19 +296,19 @@
                         <p class="card-text employeeinfo">Technology</p>
 
                         <h6 class="card-text">Manager</h6>
-                        <p class="card-text employeeinfo">Harsh Singh</p>
+                        <p class="card-text employeeinfo employeemanager">Harsh Singh</p>
 
                         <h6 class="card-text">Qualification</h6>
-                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+                        <p class="card-text employeeinfo employeequalification">MSc. Algorithms</p>
 
                         <h6 class="card-text">Years of Experience</h6>
-                        <p class="card-text employeeinfo">9 Years</p>
+                        <p class="card-text employeeinfo yoe">9 Years</p>
 
                         <h6 class="card-text">Email</h6>
-                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+                        <p class="card-text employeeinfo employeeemail">dhruv.kothari@etechsem.com</p>
 
                         <h6 class="card-text">Date of Birth</h6>
-                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+                        <p class="card-text employeeinfo employeedob">10/3/1987 (30 y.o)</p>
 
                     </div>
                 </div>
@@ -318,13 +318,12 @@
         <!-- Servicer Card -->
         <template id="servicercardtemplate">
             <div class="col-auto">
-                <div class="card" style="max-width: 256px;">
+                <div class="card border-primary h-100 employeecard" style="width: 256px;">
                     <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
                     <div class="card-header cheader">
                         <div class="delbtn"><img src="assets/delete.svg" alt="" height="14px"></div>
                         <h5 class="card-title employeename">John Doe</h5>
-                        <p class="card-subtitle text-muted small">Servicer | #392934</p>
-                        <!-- <abbr title="****" class="text-muted small">passcode</abbr> -->
+                        <p class="card-subtitle text-muted small employeeid">Servicer | #392934</p>
                     </div>
                     <div class="card-body">
 
@@ -332,16 +331,16 @@
                         <p class="card-text employeeinfo">Service</p>
 
                         <h6 class="card-text">Manager</h6>
-                        <p class="card-text employeeinfo">Harsh Singh</p>
+                        <p class="card-text employeeinfo employeemanager">Harsh Singh</p>
 
                         <h6 class="card-text">Recommendation</h6>
-                        <p class="card-text employeeinfo">name here</p>
+                        <p class="card-text employeeinfo employeerecommendation">name here</p>
 
                         <h6 class="card-text">Email</h6>
-                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+                        <p class="card-text employeeinfo employeeemail">dhruv.kothari@etechsem.com</p>
 
                         <h6 class="card-text">Date of Birth</h6>
-                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+                        <p class="card-text employeeinfo employeedob">10/3/1987 (30 y.o)</p>
 
                     </div>
                 </div>
@@ -351,27 +350,27 @@
         <!-- Manager card -->
         <template id="managercardtemplate">
             <div class="col-auto">
-                <div class="card" style="max-width: 256px;">
+                <div class="card border-danger h-100 employeecard" style="width: 256px;">
                     <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
                     <div class="card-header cheader">
                         <div class="delbtn"><img src="assets/delete.svg" alt="" height="14px"></div>
                         <h5 class="card-title employeename">John Doe</h5>
-                        <p class="card-subtitle text-muted small">Manager | #392934</p>
+                        <p class="card-subtitle text-muted small employeeid">Manager | #392934</p>
                         <!-- <abbr title="****" class="text-muted small">passcode</abbr> -->
                     </div>
                     <div class="card-body">
 
                         <h6 class="card-text">Team</h6>
-                        <p class="card-text employeeinfo">Technology</p>
+                        <p class="card-text employeeinfo employeeteam">Technology</p>
 
                         <h6 class="card-text">Qualificaiton</h6>
-                        <p class="card-text employeeinfo">Msc. Something</p>
+                        <p class="card-text employeeinfo employeequalification">Msc. Something</p>
 
                         <h6 class="card-text">Email</h6>
-                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+                        <p class="card-text employeeinfo employeeemail">dhruv.kothari@etechsem.com</p>
 
                         <h6 class="card-text">Date of Birth</h6>
-                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+                        <p class="card-text employeeinfo employeedob">10/3/1987 (30 y.o)</p>
 
                     </div>
                 </div>
