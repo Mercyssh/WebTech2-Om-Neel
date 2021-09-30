@@ -1,301 +1,306 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <title>Empolyee reg form</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <style>
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, p { 
-      padding: 0;
-      margin: 0;
-      outline: none;
-      font-family: Roboto, Arial, sans-serif;
-      font-size: 14px;
-      color: #666;
-      line-height: 22px;
-      }
-      h1 {
-      margin: 15px 0;
-      font-weight: 400;
-      }
-      h4 {
-      margin-bottom: 4px;
-      }
-      .testbox {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: inherit;
-      padding: 3px;
-      }
-      form {
-      width: 100%;
-      padding: 20px;
-      background: #fff;
-      box-shadow: 0 2px 5px #ccc; 
-      }
-      input, select, textarea {
-      width: 100%;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      }
-      input {
-      width: calc(100% - 10px);
-      padding: 5px;
-      }
-      input:hover, textarea:hover, select:hover {
-      outline: none;
-      border: 1px solid #0275d8;
-      }
-      select {
-      padding: 7px 0;
-      background: transparent;
-      }
-      textarea {
-      margin-bottom: 3px;
-      }
-      .item {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      margin: 10px 0;
-      }
-      input[type="date"]::-webkit-inner-spin-button {
-      display: none;
-      }
-      .item i, input[type="date"]::-webkit-calendar-picker-indicator {
-      position: absolute;
-      font-size: 20px;
-      color: #a9a9a9;
-      }
-      .item i {
-      left: 94%;
-      top: 30px;
-     z-index: 1;
-      }
-      [type="date"]::-webkit-calendar-picker-indicator {
-      left: 93%;
-      z-index: 2;
-      opacity: 0;
-      cursor: pointer;
-      }
-      .street, .desired-outcome-item, .complaint-details-item {
-      display: flex;
-      flex-wrap: wrap;
-      }
-      .street input {
-      margin-bottom: 10px;
-      }
-      small {
-      display: block;
-      line-height: 16px;
-      opacity: 0.7;
-      }
-      .btn-block {
-      margin-top: 20px;
-      text-align: center;
-      }
-      button {
-      width: 150px;
-      padding: 10px;
-      border: none;
-      -webkit-border-radius: 5px; 
-      -moz-border-radius: 5px; 
-      border-radius: 5px; 
-      background-color: #0275d8;
-      font-size: 16px;
-      color: #fff;
-      cursor: pointer;
-      }
-      button:hover {
-      background-color: #0275d8;
-      }
-      @media (min-width: 568px) {
-      input {
-      width: calc(35% - 20px);
-      margin: 0 0 0 8px;
-      }
-      select {
-      width: calc(50% - 8px);
-      margin: 0 0 10px 8px;
-      }
-      .item {
-      flex-direction: row;
-      align-items: center;
-      }
-      .item p {
-      width: 30%;
-      }
-      .item i {
-      left: 61%;
-      top: 25%;
-      }
-      [type="date"]::-webkit-calendar-picker-indicator {
-      left: 60%;
-      }
-      .street, .desired-outcome-item, .complaint-details-item {
-      width: 70%;
-      }
-      .street input {
-      width: calc(50% - 20px);
-      }
-      .street .street-item {
-      width: 100%;
-      }
-      .address p, .desired-outcome p, .complaint-details p {
-      align-self: flex-start;
-      margin-top: 6px;
-      }
-      .desired-outcome-item, .complaint-details-item {
-      margin-left: 12px;
-      }
-      textarea {
-      width: calc(100% - 6px);
-      }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="testbox">
-      <form action="/">
-        <h1>Manager form</h1>
-        <hr/>
-        <div class="item">
-          <p>Date of Birth</p>
-          <input type="date" name="name" required/>
-          <i class="fas fa-calendar-alt"></i>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPjs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="#">Om & Neel - Employee Database</a>
+
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    New Employee
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">Developer</a></li>
+                    <li><a class="dropdown-item" href="#">Servicer</a></li>
+                    <li><a class="dropdown-item" href="#">Manager</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="item">
-          <p>Name</p>
-          <input type="text" name="name" placeholder="First" />
-          <input type="text" name="name" placeholder="Last" />
+    </nav>
+
+    <!-- Employee Container -->
+    <div class="container-fluid employeelist">
+        <div class="row g-4">
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto ">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-auto">
+                <!-- Developer Card -->
+                <div class="card" style="max-width: 256px;">
+                    <!-- <img class="card-img-top" src="assets/unknown.png" width="50%"></img> -->
+                    <div class="card-header">
+                        <h5 class="card-title">Dhruv Kothari</h5>
+                        <p class="card-subtitle text-muted small">Developer | #392934</p>
+                    </div>
+                    <div class="card-body">
+
+                        <h6 class="card-text">Team</h6>
+                        <p class="card-text employeeinfo">Technology</p>
+
+                        <h6 class="card-text">Manager</h6>
+                        <p class="card-text employeeinfo">Harsh Singh</p>
+
+                        <h6 class="card-text">Qualification</h6>
+                        <p class="card-text employeeinfo">MSc. Algorithms</p>
+
+                        <h6 class="card-text">Email</h6>
+                        <p class="card-text employeeinfo">dhruv.kothari@etechsem.com</p>
+
+                        <h6 class="card-text">Date of Birth</h6>
+                        <p class="card-text employeeinfo">10/3/1987 (30 y.o)</p>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="item">
-          <p>Email</p>
-          <input type="text" name="name"/>
-        </div>
-         <div class="item location">
-          <p>Qualificaiton</p>
-          <input type="text" name="name"/>
-        </div>
-        <div class="item location">
-            <p>Team</p>
-            <input type="text" name="name"/>
-          </div>
-          <div class="item location">
-            <p>ID</p>
-            <input type="text" name="name"/>
-          </div>
-        
-        <div class="btn-block">
-          <button type="submit" href="/">Send</button>
-        </div>
-      </form>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <script src="oojs.js"></script>
+</body>
 
-<!--form 2-->
-
-    <div class="testbox">
-        <form action="/">
-          <h1>Servicer form</h1>
-          <hr/>
-          <div class="item">
-            <p>Date of Birth</p>
-            <input type="date" name="name" required/>
-            <i class="fas fa-calendar-alt"></i>
-          </div>
-          <div class="item">
-            <p>Name</p>
-            <input type="text" name="name" placeholder="First" />
-            <input type="text" name="name" placeholder="Last" />
-          </div>
-          <div class="item">
-            <p>Email</p>
-            <input type="text" name="name"/>
-          </div>
-           
-          <div class="item location">
-              <p>Team</p>
-              <input type="text" name="name"/>
-            </div>
-            <div class="item location">
-                <p>ID</p>
-                <input type="text" name="name"/>
-              </div>
-              <div class="item location">
-                <p>Recommendation</p>
-                <input type="text" name="name"/>
-              </div>
-              <div class="item location">
-                <p>Manager</p>
-                <input type="text" name="name"/>
-              </div>
-          
-          <div class="btn-block">
-            <button type="submit" href="/">Send</button>
-          </div>
-        </form>
-      </div>
-
-
-      <!--Form 3-->
-
-      <div class="testbox">
-        <form action="/">
-          <h1>Developer form</h1>
-          <hr/>
-          <div class="item">
-            <p>Date of Birth</p>
-            <input type="date" name="name" required/>
-            <i class="fas fa-calendar-alt"></i>
-          </div>
-          <div class="item">
-            <p>Name</p>
-            <input type="text" name="name" placeholder="First" />
-            <input type="text" name="name" placeholder="Last" />
-          </div>
-          <div class="item">
-            <p>Email</p>
-            <input type="text" name="name"/>
-          </div>
-           <div class="item location">
-            <p>Qualificaiton</p>
-            <input type="text" name="name"/>
-          </div>
-          <div class="item location">
-              <p>Team</p>
-              <input type="text" name="name"/>
-            </div>
-            <div class="item location">
-                <p>ID</p>
-                <input type="text" name="name"/>
-              </div>
-              <div class="item location">
-                <p>Recommendation</p>
-                <input type="text" name="name"/>
-              </div>
-              <div class="item location">
-                <p>Manager</p>
-                <input type="text" name="name"/>
-              </div>
-              <div class="item location">
-                <p>Passcode</p>
-                <input type="text" name="name"/>
-              </div>
-              <div class="item location">
-                <p>Years of experience</p>
-                <input type="text" name="name"/>
-              </div>
-          
-          <div class="btn-block">
-            <button type="submit" href="/">Send</button>
-          </div>
-        </form>
-      </div>
-  </body>
 </html>
