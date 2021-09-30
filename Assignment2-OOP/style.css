@@ -5,3 +5,25 @@
 .employeelist{
     padding-top: 30px;
 }
+
+.employeename{
+    max-width: 180px;
+    /* background-color: aqua; */
+}
+
+/* Delete button on card */
+.delbtn{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    /* background-color: aqua; */
+}
+.delbtn img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
