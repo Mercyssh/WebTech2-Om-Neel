@@ -307,6 +307,9 @@ function populateCards(){
     const servicercardtemplate = document.querySelector("#servicercardtemplate");
     const managercardtemplate = document.querySelector("#managercardtemplate");
 
+    // clear employeelist
+    employeelist.innerHTML="";
+
     //Get Database
     const ls = window.localStorage;
     let db = ls.getItem('db');
