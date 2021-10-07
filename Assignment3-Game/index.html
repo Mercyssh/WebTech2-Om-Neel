@@ -10,140 +10,31 @@
 </head>
 
 <body>
-    <div class="gamecontainer">
-        <div>
-            <input type="number" required placeholder="rows" value="4" min="4" max="10" id="rows" />
-            <input type="number" required placeholder="cols" value="4" min="4" max="10" id="cols" />
-            <button id="set"><img src="images/Next.svg" alt="" width="70%"></button>
-        </div>
-        <div id="grid" class="grid">
-            <div class="row">
-                <div id="tile-0-1" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-0-2" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-3" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-4" class="tile" style="height: 40px; width: 40px"></div>
-            </div>
-            <div class="row">
-                <div id="tile-1" class="tile" style="height: 40px; width: 40px">
-                    <img src="images/player.png" class="player" style="height: 30px;width: 30px;" />
-                </div>
-                <div id="tile-2" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-3" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-4" class="tile" style="height: 40px; width: 40px"></div>
-            </div>
-            <div class="row">
-                <div id="tile-0-1" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-0-2" class="tile" style="height: 40px; width: 40px">
+    <div>
+        <input type="number" required placeholder="rows" value="4" min="4" max="10" id="rows" />
+        <input type="number" required placeholder="cols" value="4" min="4" max="10" id="cols" />
+        <button id="set">Set</button>
+    </div>
+    <div id="grid" class="grid">
+        <!-- <div class="row">
+            <div id="tile-0-1" class="tile" style="height: 40px; width: 40px"></div>
+            <div id="tile-0-2" class="tile" style="height: 40px; width: 40px">
 
-                </div>
-                <div id="tile-3" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-4" class="tile" style="height: 40px; width: 40px"></div>
             </div>
-            <div class="row">
-                <div id="tile-0-1" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-0-2" class="tile" style="height: 40px; width: 40px">
-
-                </div>
-                <div id="tile-3" class="tile" style="height: 40px; width: 40px"></div>
-                <div id="tile-4" class="tile" style="height: 40px; width: 40px"></div>
-            </div>
+            <div id="tile-3" class="tile" style="height: 40px; width: 40px"></div>
+            <div id="tile-4" class="tile" style="height: 40px; width: 40px"></div>
         </div>
+        <div class="row">
+            <div id="tile-1" class="tile" style="height: 40px; width: 40px">
+                <img src="images/player.png" class="player" style="height: 30px;width: 30px;" />
+            </div>
+            <div id="tile-2" class="tile" style="height: 40px; width: 40px"></div>
+            <div id="tile-3" class="tile" style="height: 40px; width: 40px"></div>
+            <div id="tile-4" class="tile" style="height: 40px; width: 40px"></div>
+        </div> -->
     </div>
 
-    <script type="text/javascript">
-        // Om: Map -> 1 Player - direction x and y; 2 Tiles - size
-        // Angappan: Tiles - isPlayerThere
-        class Map {
-            constructor(rows, cols, tileSize) {
-                // Dimension
-                this.rows = rows
-                this.cols = cols
-                this.tileSize = tileSize || 40
-                this.tiles = []
-                this.targetHTML = document.getElementById("grid")
-                this.player = new Player(
-                    Math.floor(this.rows / 2),
-                    Math.floor(this.cols / 2),
-                    Math.floor(.75 * this.tileSize),
-                    "E"
-                )
-            }
-
-            render() {
-                // Takes number of rows and cols and creates tiles
-                for (let i = 0; i < this.rows; i++) {
-                    var rowHTML = document.createElement("div")
-                    rowHTML.setAttribute("class", "row")
-
-                    for (let j = 0; j < this.cols; j++) {
-                        let tile = new Tile(i, j)
-                        this.tiles.push(tile)
-
-                        var tileHTML = ` <div id="tile-${i}-${j}" class="tile" style="height: ${this.tileSize}px; width: ${this.tileSize}px"></div>`
-                        rowHTML.insertAdjacentHTML("beforeend", tileHTML);
-                    }
-
-                    this.targetHTML.appendChild(rowHTML)
-                }
-
-                this.player.render()
-            }
-        }
-        class Tile {
-            constructor(x, y, character) {
-                this.x = x
-                this.y = y
-                this.character = character
-            }
-
-            isTileEmpty() {
-                // Checks whether player is in this tile
-            }
-
-            render() {
-
-            }
-        }
-        class Player {
-            constructor(x, y, size, dir, image) { // dir: N, S, E, W
-                this.x = x
-                this.y = y
-                this.size = size || 30
-                this.dir = dir
-                this.image = image || 'images/player.png'
-            }
-
-            render() {
-                let playerHTML = document.createElement("img")
-                playerHTML.src = this.image
-                playerHTML.classList.add("player")
-                let deg = 0
-                switch (this.dir) {
-                    case "S": deg = 90; break;
-                    case "W": deg = 180; break;
-                    case "N": deg = 270; break;
-                    case "E":
-                    default: deg = 0
-                }
-                playerHTML.setAttribute("style", `height: ${this.size}px; width: ${this.size}px;transform: translate(-50%, -50%) rotate(${deg}deg);`)
-
-                let tileHTML = document.querySelector(`#tile-${this.x}-${this.y}`)
-                tileHTML.appendChild(playerHTML)
-            }
-        }
-        (function () {
-            const setButton = document.getElementById("set")
-            const rowsInput = document.getElementById("rows")
-            const colsInput = document.getElementById("cols")
-
-            const init = () => {
-                const map = new Map(rowsInput.value, colsInput.value)
-                map.render()
-                console.log(map)
-            }
-            setButton.addEventListener("click", init)
-        })()
-    </script>
+    <script type="text/javascript" src="game.js"></script>
 </body>
 
 </html>
