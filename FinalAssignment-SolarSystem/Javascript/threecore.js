@@ -10,7 +10,9 @@ document.body.appendChild(renderer.domElement);
 
 //Camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+camera.position.x = 5.35
+camera.position.y = 14.1;
+camera.position.z = 19.33;
 
 //Update Renderer & Camera size when resizing window
 window.addEventListener('resize', () => {

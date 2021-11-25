@@ -2,6 +2,7 @@ import * as THREE from 'https://cdn.skypack.dev/three';
 import { camera, renderer, scene } from './threecore.js';
 import { c3OrbitGeometry, radians } from './helpers.js';
 import { ocontrols } from './orbitcontrols.js';
+// import { updateDebug } from './interface.js'
 
 //## Define the Solarsystem as Objects ##
 /*Template
@@ -27,7 +28,14 @@ const solarsystem = [
         geometry: new THREE.SphereGeometry(1 * mfactors.planetradius, 24, 24),
         material: new THREE.MeshBasicMaterial({ color: 0xff0000 }),
         orbit: null,
-        orbitmesh: null
+        orbitmesh: null,
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        }
     },
     {
         name: "Mercury",
@@ -44,7 +52,15 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
+
     },
     {
         name: "Venus",
@@ -61,6 +77,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     },
     {
@@ -78,6 +101,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     },
     {
@@ -95,6 +125,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     },
     {
@@ -112,6 +149,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     },
     {
@@ -129,6 +173,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     },
     {
@@ -146,6 +197,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     },
     {
@@ -163,6 +221,13 @@ const solarsystem = [
             color: 0xffffff,
             opacity: 0.1,
             resolution: 100
+        },
+        mesh: {
+            position: {
+                x: 0,
+                y: 0,
+                z: 0
+            }
         }
     }
 ];
@@ -195,35 +260,39 @@ for (var planet of solarsystem) {
 
 
 
-//## Animate Functions ##
-//Orbits
-function animateOrbits() {
-    for (var planet of solarsystem) {
-        if (planet.name != "Sun") {
-            //Move in a circle
-            planet.mesh.position.x = planet.orbit.x + Math.sin(radians(planet.orbit.theta)) * planet.orbit.radius;
-            planet.mesh.position.z = planet.orbit.y + Math.cos(radians(planet.orbit.theta)) * planet.orbit.radius;
+// //## Animate Functions ##
+// //Orbits
+// function animateOrbits() {
+//     for (var planet of solarsystem) {
+//         if (planet.name != "Sun") {
+//             //Move in a circle
+//             planet.mesh.position.x = planet.orbit.x + Math.sin(radians(planet.orbit.theta)) * planet.orbit.radius;
+//             planet.mesh.position.z = planet.orbit.y + Math.cos(radians(planet.orbit.theta)) * planet.orbit.radius;
 
-            //Increment Theta & Loop Back around
-            planet.orbit.theta += planet.orbit.revolutionspeed;
-            if (planet.orbit.theta + planet.orbit.revolutionspeed > 360) planet.orbit.theta = planet.orbit.theta - 360;
-        }
-    }
+//             //Increment Theta & Loop Back around
+//             planet.orbit.theta += planet.orbit.revolutionspeed;
+//             if (planet.orbit.theta + planet.orbit.revolutionspeed > 360) planet.orbit.theta = planet.orbit.theta - 360;
+//         }
+//     }
+// }
+
+// //## Animation Loop ##
+// function animate() {
+
+//     //Call Animation Functions
+//     animateOrbits();
+
+//     //Update DOM
+//     // updateDebug();
+
+//     //Update Scene
+//     ocontrols.update();
+//     renderer.render(scene, camera);
+//     requestAnimationFrame(animate);
+// }
+// animate();
+
+//Exports
+export {
+    solarsystem
 }
-
-//Axis Helper
-// const axesHelper = new THREE.AxesHelper(3);
-// scene.add(axesHelper);
-
-//## Animation Loop ##
-function animate() {
-
-    //Call Animation Functions
-    animateOrbits();
-
-    //Update Scene
-    ocontrols.update();
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-}
-animate();

@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
+    user-select: none;
 }
 
 #debuggui{
@@ -11,7 +13,38 @@
     color: white;
     font-family: 'Lato', 'Calibri', sans-serif;
     padding: 30px;
-    text-align: right;
     font-size: 14px;
     font-weight: 100;
+}
+
+.planetlabel{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.493);
+    font-family: 'Lato', 'Calibri', sans-serif;
+    font-size: 12px;
+    font-weight: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: max-content;
+    height: max-content;
+    transition: color .1s ease-in;
+    user-select: none;
+}
+
+.planetlabel:hover{
+    color: rgba(255, 255, 255, 1);
+}
+.planetlabel:hover .selector{
+    border: 1px solid white;
+}
+
+.selector{
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.178);
+    border-radius: 50%;
+    margin-right: 8px;
+    transition: border .1s ease-in-out;
 }

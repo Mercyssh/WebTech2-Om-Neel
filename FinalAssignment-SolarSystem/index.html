@@ -11,23 +11,44 @@
 
 <body>
 
+    <!-- Purely used to display some debug statistics and values -->
     <div id="debuggui">
         <p>
             Lorem Ipsum Sit dolor Amet
         </p>
     </div>
 
+    <!-- Moving GUI - Such as planet names -->
+    <div id="dynamicgui">
+
+
+        <!-- Label Template -->
+        <template id="template-planetlabel">
+            <div class="planetlabel">
+                <div class="selector"></div>
+                <p class="planetname">None</p>
+            </div>
+        </template>
+    </div>
+
+    <!-- Static Gui, such as buttons and other setting related controls -->
+    <div id="staticgui">
+
+    </div>
+
     <!-- Import Modules -->
     <script src="Javascript/threecore.js" type="module"></script>
     <script src="Javascript/orbitcontrols.js" type="module"></script>
-    <script src="Javascript/transformcontrols.js" type="module"></script>
     <script src="Javascript/helpers.js" type="module"></script>
+    <!-- <script src="Javascript/transformcontrols.js" type="module"></script> -->
 
-    <!-- Import Objects and Animate -->
+    <!-- Import Objects and UI -->
     <script src="Javascript/objects.js" type="module"></script>
+    <script src="Javascript/interface.js" type="module"></script>
 
-    <!-- Actual Logic -->
-    <!-- <script src="index.js" type="module"></script> -->
+    <!-- Animatation Loop -->
+    <script src="Javascript/animate.js" type="module"></script>
+
 </body>
 
 </html>
