@@ -1,6 +1,6 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { camera, renderer, scene } from './threecore.js';
-import { c3OrbitGeometry, radians } from './helpers.js';
+import { c3OrbitGeometry, radians, randomrange } from './helpers.js';
 import { ocontrols } from './orbitcontrols.js';
 // import { updateDebug } from './interface.js'
 
@@ -45,7 +45,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 0.38 * mfactors.orbitradius,
             revolutionspeed: (1 / 0.24) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -70,7 +70,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 0.7 * mfactors.orbitradius,
             revolutionspeed: (1 / 0.6) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -94,7 +94,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 1 * mfactors.orbitradius,
             revolutionspeed: (1 / 1) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -118,7 +118,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 1.524 * mfactors.orbitradius,
             revolutionspeed: (1 / 1.88) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -142,7 +142,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 5.2 * mfactors.orbitradius,
             revolutionspeed: (1 / 11.86) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -166,7 +166,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 9.53 * mfactors.orbitradius,
             revolutionspeed: (1 / 29.4) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -190,7 +190,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 19.1 * mfactors.orbitradius,
             revolutionspeed: (1 / 84) * mfactors.revolutionspeed,
             rotationspeed: 1,
@@ -214,7 +214,7 @@ const solarsystem = [
         orbit: {
             x: 0,
             y: 0,
-            theta: 0,
+            theta: randomrange(0, 360),
             radius: 30 * mfactors.orbitradius,
             revolutionspeed: (1 / 164.8) * mfactors.revolutionspeed,
             rotationspeed: 1,

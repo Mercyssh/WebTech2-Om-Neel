@@ -1,15 +1,17 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { camera, renderer } from './threecore.js';
 import { solarsystem } from './objects.js';
+import { ocontrols } from './orbitcontrols.js';
 
 const body = document.body;
 const dynamicgui = document.querySelector("#dynamicgui");
 const debuggui = document.querySelector("#debuggui");
 const templateplanetlabel = document.querySelector("#template-planetlabel");
-let frustum = new THREE.Frustum();
+let frustum = new THREE.Frustum();  //Used to check if an object is on screen or not
 
 const planetLabels = {}
 
+//Create labels and add to DOM
 for (const planet of solarsystem) {
     const node = templateplanetlabel.content.cloneNode(true);
     node.querySelector('.planetlabel').id = `planetlabel-${planet.name}`
@@ -59,8 +61,12 @@ function updateDebug() {
     X position : ${Math.round(camera.position.x)}
     Y position : ${Math.round(camera.position.y)}
     Z position : ${Math.round(camera.position.z)}
+    Zoom : ${ocontrols}
     `
 }
+
+// Delete this later
+// console.log("\nFunction Derived Distance\n=" + ocontrols.getDistance());
 
 // Generate
 export {

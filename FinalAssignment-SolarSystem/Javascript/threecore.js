@@ -21,15 +21,18 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
 });
 
+//Prevent Middle Clicking
+document.body.onmousedown = function (e) { if (e.button == 1) return false };
+
 //Background
 const bgloader = new THREE.CubeTextureLoader();
 const bgtexture = bgloader.load([
-    './Assets/Sky/front.png',
-    './Assets/Sky/back.png',
-    './Assets/Sky/top.png',
-    './Assets/Sky/bottom.png',
-    './Assets/Sky/right.png',
-    './Assets/Sky/left.png'
+    './Assets/Sky3/front.png', //Front : px
+    './Assets/Sky3/back.png', //Left : nx
+    './Assets/Sky3/top.png', //Top : py
+    './Assets/Sky3/bottom.png', //Bottom : ny
+    './Assets/Sky3/left.png', //Left : pz
+    './Assets/Sky3/right.png' //Right : nz
 ]);
 scene.background = bgtexture;
 

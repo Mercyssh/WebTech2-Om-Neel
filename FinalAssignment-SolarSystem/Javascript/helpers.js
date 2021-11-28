@@ -1,6 +1,6 @@
+// This file includes New custom functions that can be used across the codebase
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { scene } from './threecore.js';
-
 
 //Convert degrees to radians
 function radians(degrees) {
@@ -18,7 +18,27 @@ function c3OrbitGeometry(x = 0, y = 0, radius = 5, resolution = 100, color = 0xf
     return l
 }
 
+//Function to return random value between a range
+function randomrange(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+// Function to return a position vector given direction, magnitude and starting vector
+function getVectorByMagnitude(
+    startpoint = new THREE.Vector3(0, 0, 0),
+    direction = new THREE.Vector3(0, 0, 0),
+    magnitude = 1
+) {
+    //Prepare direction
+    direction.normalize();
+    direction.multiplyScalar(magnitude);
+    let endpoint = startpoint.add(direction);
+    return endpoint
+}
+
 export {
     c3OrbitGeometry,
-    radians
+    radians,
+    randomrange,
+    getVectorByMagnitude
 };
