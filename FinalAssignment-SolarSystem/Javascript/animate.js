@@ -2,7 +2,7 @@
 import { scene, renderer, camera } from './threecore.js'
 import { solarsystem } from './objects.js';
 import { radians } from './helpers.js';
-import { ocontrols } from './orbitcontrols.js';
+import { ocontrols, UpdateZoomControls } from './orbitcontrols.js';
 import { updateDebug, updateLabels } from './interface.js';
 
 
@@ -37,6 +37,7 @@ function animate() {
 
     //Update Scene
     ocontrols.update();
+    UpdateZoomControls();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 }

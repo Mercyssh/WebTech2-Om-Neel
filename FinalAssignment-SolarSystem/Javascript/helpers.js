@@ -36,9 +36,17 @@ function getVectorByMagnitude(
     return endpoint
 }
 
+//Linear Interpolation
+function lerp(a, b, f) {
+    let x = (b - a) * f;
+    x = a + x;
+    return x
+}
+
 export {
     c3OrbitGeometry,
     radians,
     randomrange,
-    getVectorByMagnitude
+    getVectorByMagnitude,
+    lerp
 };

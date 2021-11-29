@@ -2,7 +2,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { camera, renderer } from './threecore.js';
 import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
-import { getVectorByMagnitude } from './helpers.js';
+import { getVectorByMagnitude, lerp } from './helpers.js';
 import { solarsystem } from './objects.js';
 
 //Orbital Controls
@@ -17,27 +17,21 @@ ocontrols.enableZoom = false;
 const customzoom = {
     zoom: 24,
     zoomspeed: .6,
-    min: .1,
+    zoomfactor: .2,
+    min: .08,
     max: 200,
     focus: solarsystem[0].mesh.position
 }
+customzoom.zoom0 = customzoom.zoom;
 
-//Handle Custom Zooming
-let dirvector = new THREE.Vector3(0, 0, 0)
-window.addEventListener('wheel', function (e) {
+//Update the zoom / Smooth Zoom
+let dirvector = new THREE.Vector3(0, 0, 0);
+function UpdateZoomControls() {
+    customzoom.zoom0 = lerp(customzoom.zoom0, customzoom.zoom, customzoom.zoomfactor);
 
-    //Increment Decremenet Zoom Level
-    let dir = Math.sign(e.deltaY) == -1 ? "up" : "down";
-    customzoom.zoom = dir == "up" ? customzoom.zoom -= customzoom.zoomspeed : customzoom.zoom += customzoom.zoomspeed;
-    customzoom.zoom = Math.min(customzoom.zoom, customzoom.max);
-    customzoom.zoom = Math.max(customzoom.zoom, customzoom.min);
-
-    //Calculate New Pointvector.
-    //Get Direction Vector, Normalize it
-    //New point = Old point + (Direction * Magnitude)
     dirvector.x = 0; dirvector.y = 0; dirvector.z = 0;
     dirvector.subVectors(camera.position, ocontrols.target).normalize();
-    dirvector = getVectorByMagnitude(ocontrols.target, dirvector, customzoom.zoom);
+    dirvector = getVectorByMagnitude(ocontrols.target, dirvector, customzoom.zoom0);
 
     //Dolly Camera
     camera.position.x = dirvector.x;
@@ -50,11 +44,39 @@ window.addEventListener('wheel', function (e) {
     ocontrols.target.y = customzoom.focus.y;
     ocontrols.target.z = customzoom.focus.z;
 
-    console.log(ocontrols.target);
-
-
     camera.updateMatrix();
     camera.updateMatrixWorld();
+}
+
+//Increment Decrement Custom Zooming
+window.addEventListener('wheel', function (e) {
+
+    //Increment Decremenet Zoom Level
+    let dir = Math.sign(e.deltaY) == -1 ? "up" : "down";
+    customzoom.zoom = dir == "up" ? customzoom.zoom -= customzoom.zoomspeed : customzoom.zoom += customzoom.zoomspeed;
+    customzoom.zoom = Math.min(customzoom.zoom, customzoom.max);
+    customzoom.zoom = Math.max(customzoom.zoom, customzoom.min);
+
+    // //Calculate New Pointvector.
+    //Get Direction Vector, Normalize it
+    //New point = Old point + (Direction * Magnitude)
+    // dirvector.x = 0; dirvector.y = 0; dirvector.z = 0;
+    // dirvector.subVectors(camera.position, ocontrols.target).normalize();
+    // dirvector = getVectorByMagnitude(ocontrols.target, dirvector, customzoom.zoom0);
+
+    // //Dolly Camera
+    // camera.position.x = dirvector.x;
+    // camera.position.y = dirvector.y;
+    // camera.position.z = dirvector.z;
+
+    // //Reset Target
+    // customzoom.focus = solarsystem[0].mesh.position;
+    // ocontrols.target.x = customzoom.focus.x;
+    // ocontrols.target.y = customzoom.focus.y;
+    // ocontrols.target.z = customzoom.focus.z;
+
+    // camera.updateMatrix();
+    // camera.updateMatrixWorld();
 })
 
 /*
@@ -67,4 +89,7 @@ directionvector.multiplyScalar(24.516);
 console.log(directionvector);
 */
 
-export { ocontrols };
+export {
+    ocontrols,
+    UpdateZoomControls
+};
