@@ -1,0 +1,125 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* MAIN CONTAINER */
+.maincontainer{
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  /* background-color: rgb(134, 183, 226); */
+}
+
+
+/* THUMBNAILS */
+.maincontainer-thumbnails{
+  display: flex;
+  align-items: top;
+  column-gap: 20px;
+}
+
+.thumbnail{
+  background-color: rgb(235, 235, 235);
+  width: max-content;
+  max-width: 200px;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  column-gap: 15px;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+.thumbnail:hover{
+  background-color: rgb(255, 255, 255);
+}
+.thumbnail:active{
+  background-color: gray;
+}
+
+.thumbnail-image{
+  height: 60px;
+}
+
+.thumbnail-text{
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.thumbnail-text *{
+  margin: 0px;
+}
+
+.thumbnail-title{
+  font-size: 16px;
+}
+.thumbnail-director{
+  font-size: 12px;
+}
+
+
+/* MOVIE INFO */
+.movie{
+  display: flex;
+  column-gap: 40px;
+}
+.movie-image{
+  width: 400px;
+  height: max-content;
+}
+.movie-info{
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+}
+
+.movie-info h1{
+  font-weight: 400;
+}
+.movie-year, .movie-director, .movie-synopsis{
+  margin-bottom: 15px;
+}
+.movie-year{
+  color: gray;
+}
+
+.movie-cast:first-of-type{
+  font-weight: 500;
+}
+.movie-cast div{
+  margin-bottom: 10px;
+}
+.movie-cast-members{
+  display: flex;
+  column-gap: 10px;
+}
+.movie-cast-member{
+  font-weight: 400;
+  background-color: rgb(235, 235, 235);
+  border: 1px solid black;
+  padding: 10px;
+}
+.movie-cast-actor{
+  font-weight: 500;
+  font-size: 16px;
+}
