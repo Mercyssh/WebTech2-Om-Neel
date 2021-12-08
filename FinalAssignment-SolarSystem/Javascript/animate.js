@@ -1,4 +1,5 @@
 //Handles the Animation Loop
+import * as THREE from 'https://cdn.skypack.dev/three';
 import { scene, renderer, camera } from './threecore.js'
 import { solarsystem } from './objects.js';
 import { radians } from './helpers.js';
@@ -7,7 +8,13 @@ import { updateDebug, updateLabels } from './interface.js';
 
 
 //## Animate Functions ##
-//Orbits
+
+//Add Rings to a group
+const ringpivot = new THREE.Group();
+scene.add(ringpivot);
+ringpivot.add(solarsystem[6].rings)
+
+// Animate Orbits
 function animateOrbits() {
     for (var planet of solarsystem) {
         if (planet.name != "Sun") {
@@ -20,6 +27,12 @@ function animateOrbits() {
             if (planet.orbit.theta + planet.orbit.revolutionspeed > 360) planet.orbit.theta = planet.orbit.theta - 360;
         }
     }
+
+    ringpivot.rotation.set(radians(0), radians(solarsystem[6].orbit.theta), radians(0));
+    solarsystem[6].rings.rotation.set(radians(90 - 20), radians(0), radians(0));
+    ringpivot.position.x = solarsystem[6].mesh.position.x;
+    ringpivot.position.y = solarsystem[6].mesh.position.y;
+    ringpivot.position.z = solarsystem[6].mesh.position.z;
 }
 
 

@@ -4,12 +4,14 @@ import * as THREE from 'https://cdn.skypack.dev/three';
 const scene = new THREE.Scene();
 
 //Renderer
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+    antialias: true
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 //Camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.001, 1000);
 camera.position.x = 5.35
 camera.position.y = 14.1;
 camera.position.z = 19.33;

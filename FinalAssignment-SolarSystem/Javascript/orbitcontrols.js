@@ -18,11 +18,13 @@ const customzoom = {
     zoom: 24,
     zoomspeed: .6,
     zoomfactor: .2,
-    min: .08,
+    min: .1,
     max: 200,
     focus: solarsystem[0]
 }
 customzoom.zoom0 = customzoom.zoom;
+
+// console.log(solarsystem[1].mesh.geometry.parameters.radius)
 
 //Update the zoom / Smooth Zoom
 let dirvector = new THREE.Vector3(0, 0, 0);

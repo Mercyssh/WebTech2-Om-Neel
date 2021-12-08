@@ -5,6 +5,20 @@ import { scene } from './threecore.js';
 //Set up Sun
 const sunlight = new THREE.PointLight(0xffffff, 1, 0, 0);
 sunlight.position.set(0, 0, 0);
+
+// const d = 1000;
+// sunlight.castShadow = true;
+// sunlight.shadow.camera.left = - d;
+// sunlight.shadow.camera.right = d;
+// sunlight.shadow.camera.top = d;
+// sunlight.shadow.camera.bottom = - d;
+// sunlight.shadow.mapSize.Width = 2048;
+// sunlight.shadow.mapSize.Height = 2048;
+// sunlight.shadow.camera.near = 0.01;
+// sunlight.shadow.camera.far = 1000
+// sunlight.shadow.camera.fov = 360;
+// scene.add(new THREE.CameraHelper(sunlight.shadow.camera));
+
 scene.add(sunlight);
 
 
@@ -48,6 +62,13 @@ const textureSaturn = new THREE.MeshStandardMaterial({
     map: textureLoader.load('./Assets/Textures/Saturn/saturn-color.jpg')
 })
 
+const textureSaturnRings = new THREE.MeshStandardMaterial({
+    map: textureLoader.load('./Assets/Textures/Saturn/saturn-rings.png'),
+    transparent: true,
+    side: THREE.DoubleSide,
+    alphaMap: textureLoader.load('./Assets/Textures/Saturn/saturn-rings-alpha.png')
+})
+
 const textureUranus = new THREE.MeshStandardMaterial({
     map: textureLoader.load('./Assets/Textures/Uranus/uranus-color.jpg')
 })
@@ -65,6 +86,7 @@ const textures = {
     Mars: textureMars,
     Jupiter: textureJupiter,
     Saturn: textureSaturn,
+    SaturnRings: textureSaturnRings,
     Uranus: textureUranus,
     Neptune: textureNeptune
 }

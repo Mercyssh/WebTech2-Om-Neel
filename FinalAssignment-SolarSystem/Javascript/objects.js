@@ -1,6 +1,6 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { scene } from './threecore.js';
-import { c3OrbitGeometry, randomrange } from './helpers.js';
+import { c3OrbitGeometry, randomrange, radians } from './helpers.js';
 import { textures } from './textures.js';
 // import { ocontrols } from './orbitcontrols.js';
 
@@ -61,7 +61,7 @@ const solarsystem = [
             radius: 0.38 * mfactors.orbitradius,
             revolutionspeed: (1 / 0.24) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -97,7 +97,7 @@ const solarsystem = [
             radius: 0.7 * mfactors.orbitradius,
             revolutionspeed: (1 / 0.6) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -132,7 +132,7 @@ const solarsystem = [
             radius: 1 * mfactors.orbitradius,
             revolutionspeed: (1 / 1) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -167,7 +167,7 @@ const solarsystem = [
             radius: 1.524 * mfactors.orbitradius,
             revolutionspeed: (1 / 1.88) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -202,7 +202,7 @@ const solarsystem = [
             radius: 5.2 * mfactors.orbitradius,
             revolutionspeed: (1 / 11.86) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -230,6 +230,7 @@ const solarsystem = [
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(9.14 * mfactors.planetradius, 32, 32),
         material: textures["Saturn"],
+        rings: new THREE.Mesh(new THREE.PlaneGeometry(2.3, 2.3), textures["SaturnRings"]),
         orbit: {
             x: 0,
             y: 0,
@@ -237,7 +238,7 @@ const solarsystem = [
             radius: 9.53 * mfactors.orbitradius,
             revolutionspeed: (1 / 29.4) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -272,7 +273,7 @@ const solarsystem = [
             radius: 19.1 * mfactors.orbitradius,
             revolutionspeed: (1 / 84) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -307,7 +308,7 @@ const solarsystem = [
             radius: 30 * mfactors.orbitradius,
             revolutionspeed: (1 / 164.8) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0xffffff,
+            color: 0x141414,
             opacity: 0.1,
             resolution: 100
         },
@@ -320,6 +321,9 @@ const solarsystem = [
         }
     }
 ];
+
+//Add Saturn Rings
+scene.add(solarsystem[6].rings);
 
 //Load Meshes and Add to Scene
 for (var planet of solarsystem) {
@@ -347,6 +351,8 @@ for (var planet of solarsystem) {
     //Add to Scene
     scene.add(planet.mesh);
 }
+
+
 
 //Exports
 export {
