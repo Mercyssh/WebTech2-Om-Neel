@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { scene } from './threecore.js';
 import { c3OrbitGeometry, randomrange } from './helpers.js';
+import { textures } from './textures.js';
 // import { ocontrols } from './orbitcontrols.js';
 
 //## Define the Solarsystem as Objects ##
@@ -26,7 +27,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(1 * mfactors.planetradius, 24, 24),
-        material: new THREE.MeshBasicMaterial({ color: 0xff0000 }),
+        material: textures["Sun"],
         orbit: null,
         orbitmesh: null,
         mesh: {
@@ -52,7 +53,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(.383 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Mercury"],
         orbit: {
             x: 0,
             y: 0,
@@ -88,7 +89,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(.95 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Venus"],
         orbit: {
             x: 0,
             y: 0,
@@ -123,7 +124,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(1 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Earth"],
         orbit: {
             x: 0,
             y: 0,
@@ -158,7 +159,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(.532 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Mars"],
         orbit: {
             x: 0,
             y: 0,
@@ -193,7 +194,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(10.9 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Jupiter"],
         orbit: {
             x: 0,
             y: 0,
@@ -228,7 +229,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(9.14 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Saturn"],
         orbit: {
             x: 0,
             y: 0,
@@ -263,7 +264,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(4 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Uranus"],
         orbit: {
             x: 0,
             y: 0,
@@ -298,7 +299,7 @@ const solarsystem = [
 
         position: new THREE.Vector3(5, 0, 0),
         geometry: new THREE.SphereGeometry(3.8 * mfactors.planetradius, 32, 32),
-        material: new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
+        material: textures["Neptune"],
         orbit: {
             x: 0,
             y: 0,
