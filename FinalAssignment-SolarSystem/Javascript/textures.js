@@ -30,6 +30,9 @@ const textureEarth = new THREE.MeshStandardMaterial({
     map: textureLoader.load('./Assets/Textures/Earth/earth-color-combined.png'),
     normalMap: textureLoader.load('./Assets/Textures/Earth/earth-normal.png'),
     roughnessMap: textureLoader.load('./Assets/Textures/Earth/earth-roughness.png'),
+    emissive: 0xFFFBCE,
+    emissiveIntensity: 1,
+    emissiveMap: textureLoader.load('./Assets/Textures/Earth/earth-lights.png'),
 })
 
 const textureMars = new THREE.MeshStandardMaterial({
