@@ -1,17 +1,22 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
-import { camera, renderer } from './threecore.js';
+import { camera, renderer, scene, bgtextures } from './threecore.js';
 import { solarsystem } from './objects.js';
 import { ocontrols, customzoom } from './orbitcontrols.js';
 
 //Selectors for DOM elements
 const dynamicgui = document.querySelector("#dynamicgui");
 const debuggui = document.querySelector("#debuggui");
-const planetinfo = document.querySelector("#planetinfo");
-const suninfo = document.querySelector("#suninfo");
 const body = document.body;
 const templateplanetlabel = document.querySelector("#template-planetlabel");
 
+//Static GUI selectors
+const planetinfo = document.querySelector("#planetinfo");
+const suninfo = document.querySelector("#suninfo");
+const changebg = document.querySelector("#btn-changebg");
+const togglelight = document.querySelector("#btn-togglelight");
+
 //Functional variables
+let cbg = 1; //Current background texture index
 let frustum = new THREE.Frustum();  //Used to check if an object is on screen or not
 const mousecoord = new THREE.Vector2(0, 0);
 let mreleased = true;
@@ -82,19 +87,20 @@ for (var i in planetLabels) {
     let label = planetLabels[i];
     label.addEventListener('click', function (e) { focusPlanet(e, this) })
 }
-body.addEventListener('mousedown', (e) => {
+renderer.domElement.addEventListener('mousedown', (e) => {
     if (mreleased) {
         mousecoord.x = e.clientX;
         mousecoord.y = e.clientY;
         mreleased = false;
     }
 })
-body.addEventListener('mouseup', (e) => {
+renderer.domElement.addEventListener('mouseup', (e) => {
     if (e.clientX == mousecoord.x && e.clientY == mousecoord.y) {
         unfocusPlanet();
     }
     mreleased = true;
 })
+changebg.addEventListener('click', fchangebg);
 
 
 //Runs on Label Onclick > Focuses appropriate planet into view
@@ -110,6 +116,7 @@ function focusPlanet(e, ele) {
     let info = solarsystem[index].info;
     //Planet Case
     if (index != 0) {
+        suninfo.classList.remove("show-me");
         planetinfo.classList.add("show-me");
         planetinfo.querySelector(".infoplanetname").innerHTML = solarsystem[index].name;
         planetinfo.querySelector(".planetclass").innerText = info.infoType;
@@ -119,8 +126,8 @@ function focusPlanet(e, ele) {
         planetinfo.querySelector(".infodistance").innerText = info.infoOrbitRadius;
         planetinfo.querySelector(".infomoons").innerText = info.infoMoons;
         planetinfo.querySelector(".infodiameter").innerText = info.infoDiameter;
-        suninfo.classList.remove("show-me");
     } else {
+        planetinfo.classList.remove("show-me");
         suninfo.classList.add("show-me");
     }
 }
@@ -129,6 +136,11 @@ function unfocusPlanet() {
     customzoom.focus = solarsystem[0];
     planetinfo.classList.remove("show-me");
     suninfo.classList.remove("show-me");
+}
+function fchangebg() {
+    cbg++;
+    if (cbg > bgtextures.length) cbg = 0;
+    scene.background = bgtextures[cbg];
 }
 
 
