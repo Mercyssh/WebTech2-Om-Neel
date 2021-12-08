@@ -41,12 +41,6 @@ function UpdateZoomControls() {
     camera.position.y = dirvector.y;
     camera.position.z = dirvector.z;
 
-    //Old Reset Target code
-    // customzoom.focus = solarsystem[0].mesh.position;
-    // ocontrols.target.x = customzoom.focus.mesh.position.x;
-    // ocontrols.target.y = customzoom.focus.mesh.position.y;
-    // ocontrols.target.z = customzoom.focus.mesh.position.z;
-
     camera.updateMatrix();
     camera.updateMatrixWorld();
 }

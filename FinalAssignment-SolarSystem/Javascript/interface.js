@@ -14,6 +14,7 @@ const templateplanetlabel = document.querySelector("#template-planetlabel");
 const planetinfo = document.querySelector("#planetinfo");
 const suninfo = document.querySelector("#suninfo");
 const changebg = document.querySelector("#btn-changebg");
+const toggleorbits = document.querySelector("#btn-toggleorbits");
 const togglelight = document.querySelector("#btn-togglelight");
 
 //Functional variables
@@ -21,6 +22,7 @@ let cbg = 1; //Current background texture index
 let frustum = new THREE.Frustum();  //Used to check if an object is on screen or not
 const mousecoord = new THREE.Vector2(0, 0);
 let mreleased = true;
+let ttoggleorbits = true;
 
 const planetLabels = {}
 
@@ -47,6 +49,7 @@ function updateLabels() {
         planetpositionvec3.x = planet.mesh.position.x
         planetpositionvec3.y = planet.mesh.position.y
         planetpositionvec3.z = planet.mesh.position.z
+
         camera.updateMatrix();
         camera.updateMatrixWorld();
 
@@ -107,6 +110,7 @@ window.addEventListener('wheel', function (e) {
     }
 })
 togglelight.addEventListener('click', ftogglelight);
+toggleorbits.addEventListener('click', ftoggleorbits);
 
 //Runs on Label Onclick > Focuses appropriate planet into view
 function focusPlanet(e, ele) {
@@ -157,6 +161,23 @@ function fchangebg() {
 function ftogglelight() {
     ambientlight.intensity = ambientlight.intensity == 0 ? 1 : 0;
     sunlight.intensity = sunlight.intensity == 0 ? 1 : 0;
+}
+function ftoggleorbits() {
+    if (ttoggleorbits == false) {
+        for (var planet of solarsystem) {
+            if (planet.name != 'Sun') {
+                planet.orbitmesh.material.opacity = 0.1;
+            }
+        }
+        ttoggleorbits = true;
+    } else {
+        for (var planet of solarsystem) {
+            if (planet.name != 'Sun') {
+                planet.orbitmesh.material.opacity = 0;
+            }
+        }
+        ttoggleorbits = false;
+    }
 }
 
 

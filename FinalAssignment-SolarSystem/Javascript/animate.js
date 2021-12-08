@@ -2,8 +2,8 @@
 import * as THREE from 'https://cdn.skypack.dev/three';
 import { scene, renderer, camera } from './threecore.js'
 import { solarsystem } from './objects.js';
-import { radians } from './helpers.js';
-import { ocontrols, UpdateZoomControls } from './orbitcontrols.js';
+import { radians, getVectorByMagnitude } from './helpers.js';
+import { ocontrols, UpdateZoomControls, customzoom } from './orbitcontrols.js';
 import { updateDebug, updateLabels } from './interface.js';
 
 
@@ -21,6 +21,8 @@ function animateOrbits() {
             //Move in a circle
             planet.mesh.position.x = planet.orbit.x + Math.sin(radians(planet.orbit.theta)) * planet.orbit.radius;
             planet.mesh.position.z = planet.orbit.y + Math.cos(radians(planet.orbit.theta)) * planet.orbit.radius;
+            planet.mesh.updateMatrix();
+            planet.mesh.updateMatrixWorld();
 
             //Increment Theta & Loop Back around
             planet.orbit.theta += planet.orbit.revolutionspeed;
@@ -34,6 +36,8 @@ function animateOrbits() {
     ringpivot.position.y = solarsystem[6].mesh.position.y;
     ringpivot.position.z = solarsystem[6].mesh.position.z;
 }
+
+// console.log(solarsystem[3].group)
 
 
 //## Animation Loop ##

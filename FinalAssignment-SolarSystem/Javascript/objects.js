@@ -61,7 +61,7 @@ const solarsystem = [
             radius: 0.38 * mfactors.orbitradius,
             revolutionspeed: (1 / 0.24) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -87,7 +87,7 @@ const solarsystem = [
             infoDiameter: "12103 km",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(.95 * mfactors.planetradius, 32, 32),
         material: textures["Venus"],
         orbit: {
@@ -97,7 +97,7 @@ const solarsystem = [
             radius: 0.7 * mfactors.orbitradius,
             revolutionspeed: (1 / 0.6) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -122,7 +122,7 @@ const solarsystem = [
             infoDiameter: "12742",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(1 * mfactors.planetradius, 32, 32),
         material: textures["Earth"],
         orbit: {
@@ -132,7 +132,7 @@ const solarsystem = [
             radius: 1 * mfactors.orbitradius,
             revolutionspeed: (1 / 1) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -157,7 +157,7 @@ const solarsystem = [
             infoDiameter: "6,779 km",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(.532 * mfactors.planetradius, 32, 32),
         material: textures["Mars"],
         orbit: {
@@ -167,7 +167,7 @@ const solarsystem = [
             radius: 1.524 * mfactors.orbitradius,
             revolutionspeed: (1 / 1.88) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -192,7 +192,7 @@ const solarsystem = [
             infoDiameter: "142984 km",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(10.9 * mfactors.planetradius, 32, 32),
         material: textures["Jupiter"],
         orbit: {
@@ -202,7 +202,7 @@ const solarsystem = [
             radius: 5.2 * mfactors.orbitradius,
             revolutionspeed: (1 / 11.86) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -227,7 +227,7 @@ const solarsystem = [
             infoDiameter: "120536 km",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(9.14 * mfactors.planetradius, 32, 32),
         material: textures["Saturn"],
         rings: new THREE.Mesh(new THREE.PlaneGeometry(2.3, 2.3), textures["SaturnRings"]),
@@ -238,7 +238,7 @@ const solarsystem = [
             radius: 9.53 * mfactors.orbitradius,
             revolutionspeed: (1 / 29.4) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -263,7 +263,7 @@ const solarsystem = [
             infoDiameter: "51118 km",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(4 * mfactors.planetradius, 32, 32),
         material: textures["Uranus"],
         orbit: {
@@ -273,7 +273,7 @@ const solarsystem = [
             radius: 19.1 * mfactors.orbitradius,
             revolutionspeed: (1 / 84) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -298,7 +298,7 @@ const solarsystem = [
             infoDiameter: "49528 km",
         },
 
-        position: new THREE.Vector3(5, 0, 0),
+        position: new THREE.Vector3(0, 0, 0),
         geometry: new THREE.SphereGeometry(3.8 * mfactors.planetradius, 32, 32),
         material: textures["Neptune"],
         orbit: {
@@ -308,7 +308,7 @@ const solarsystem = [
             radius: 30 * mfactors.orbitradius,
             revolutionspeed: (1 / 164.8) * mfactors.revolutionspeed,
             rotationspeed: 1,
-            color: 0x141414,
+            color: 0xffffff,
             opacity: 0.1,
             resolution: 100
         },
@@ -346,7 +346,6 @@ for (var planet of solarsystem) {
     mesh.position.y = planet.position.y;
     mesh.position.z = planet.position.z;
     planet.mesh = mesh;
-    planet.group = new THREE.Group();
 
     //Add to Scene
     scene.add(planet.mesh);

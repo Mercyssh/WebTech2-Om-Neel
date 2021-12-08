@@ -12,7 +12,7 @@ function radians(degrees) {
 function c3OrbitGeometry(x = 0, y = 0, radius = 5, resolution = 100, color = 0xffffff, opacity = 0.05) {
     let pts = new THREE.Path().absarc(x, y, radius, 0, Math.PI * 2).getPoints(resolution);
     let g = new THREE.BufferGeometry().setFromPoints(pts);
-    let m = new THREE.LineBasicMaterial({ color: color, transparent: false, opacity: opacity });
+    let m = new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: opacity });
     let l = new THREE.Line(g, m);
     l.rotation.x = radians(90);
     return l
