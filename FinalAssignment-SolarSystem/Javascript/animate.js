@@ -33,7 +33,7 @@ function animate() {
     updateLabels();
 
     //Update DOM
-    updateDebug();
+    // updateDebug();
 
     //Update Scene
     ocontrols.update();

@@ -31,8 +31,8 @@ function getVectorByMagnitude(
 ) {
     //Prepare direction
     direction.normalize();
-    direction.multiplyScalar(magnitude);
-    let endpoint = startpoint.add(direction);
+    direction = direction.multiplyScalar(magnitude)
+    let endpoint = direction.addVectors(startpoint, direction)
     return endpoint
 }
 
