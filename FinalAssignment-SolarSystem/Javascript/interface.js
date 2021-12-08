@@ -109,7 +109,8 @@ function focusPlanet(e, ele) {
     //Update Camera
     let index = parseInt(ele.id.replace("planetlabel-", ""));   //Index in sol array
     // customzoom.zoom = 2 //Create a formula to dynamically adjust this please, based on planet size/radius (you can get radius from solarsystem array)
-    customzoom.zoom = solarsystem[index].mesh.geometry.parameters.radius * 3.33
+    customzoom.zoom = solarsystem[index].mesh.geometry.parameters.radius * 3.33;
+    customzoom.min = solarsystem[index].mesh.geometry.parameters.radius * 2;
 
     customzoom.focus = solarsystem[index]
 

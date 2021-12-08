@@ -18,7 +18,7 @@ const customzoom = {
     zoom: 24,
     zoomspeed: .6,
     zoomfactor: .2,
-    min: .1,
+    min: .2,
     max: 200,
     focus: solarsystem[0]
 }
