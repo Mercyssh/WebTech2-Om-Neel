@@ -19,7 +19,7 @@ const customzoom = {
     zoomspeed: .6,
     zoomfactor: .2,
     min: .2,
-    max: 200,
+    max: 400,
     focus: solarsystem[0]
 }
 customzoom.zoom0 = customzoom.zoom;
@@ -54,10 +54,9 @@ function UpdateZoomControls() {
 window.addEventListener('wheel', function (e) {
     //Increment Decremenet Zoom Level
     let dir = Math.sign(e.deltaY) == -1 ? "up" : "down";
-    customzoom.zoom = dir == "up" ? customzoom.zoom -= customzoom.zoomspeed : customzoom.zoom += customzoom.zoomspeed;
+    customzoom.zoom = dir == "up" ? customzoom.zoom -= customzoom.zoomspeed + Math.sqrt((customzoom.zoom)) : customzoom.zoom += customzoom.zoomspeed + Math.pow((customzoom.zoom / 40), 2);
     customzoom.zoom = Math.min(customzoom.zoom, customzoom.max);
     customzoom.zoom = Math.max(customzoom.zoom, customzoom.min);
-
 })
 
 export {

@@ -2,6 +2,7 @@ import * as THREE from 'https://cdn.skypack.dev/three';
 import { camera, renderer, scene, bgtextures } from './threecore.js';
 import { solarsystem } from './objects.js';
 import { ocontrols, customzoom } from './orbitcontrols.js';
+import { ambientlight, sunlight } from './textures.js';
 
 //Selectors for DOM elements
 const dynamicgui = document.querySelector("#dynamicgui");
@@ -80,7 +81,7 @@ function updateDebug() {
 }
 
 
-//###HANDLE INTERACFTIVITY###
+//###HANDLE INTERACTIVITY###
 
 //Add event listeners
 for (var i in planetLabels) {
@@ -101,7 +102,13 @@ renderer.domElement.addEventListener('mouseup', (e) => {
     mreleased = true;
 })
 changebg.addEventListener('click', fchangebg);
-
+window.addEventListener('wheel', function (e) {
+    //Increment Decremenet Zoom Level
+    if (customzoom.zoom > 10) {
+        hideUI();
+    }
+})
+togglelight.addEventListener('click', ftogglelight);
 
 //Runs on Label Onclick > Focuses appropriate planet into view
 function focusPlanet(e, ele) {
@@ -140,10 +147,18 @@ function unfocusPlanet() {
     planetinfo.classList.remove("show-me");
     suninfo.classList.remove("show-me");
 }
+function hideUI() {
+    planetinfo.classList.remove("show-me");
+    suninfo.classList.remove("show-me");
+}
 function fchangebg() {
     cbg++;
     if (cbg > bgtextures.length) cbg = 0;
     scene.background = bgtextures[cbg];
+}
+function ftogglelight() {
+    ambientlight.intensity = ambientlight.intensity == 0 ? 1 : 0;
+    sunlight.intensity = sunlight.intensity == 0 ? 1 : 0;
 }
 
 

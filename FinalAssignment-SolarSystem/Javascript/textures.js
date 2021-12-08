@@ -5,29 +5,21 @@ import { scene } from './threecore.js';
 //Set up Sun
 const sunlight = new THREE.PointLight(0xffffff, 1, 0, 0);
 sunlight.position.set(0, 0, 0);
-
-// const d = 1000;
-// sunlight.castShadow = true;
-// sunlight.shadow.camera.left = - d;
-// sunlight.shadow.camera.right = d;
-// sunlight.shadow.camera.top = d;
-// sunlight.shadow.camera.bottom = - d;
-// sunlight.shadow.mapSize.Width = 2048;
-// sunlight.shadow.mapSize.Height = 2048;
-// sunlight.shadow.camera.near = 0.01;
-// sunlight.shadow.camera.far = 1000
-// sunlight.shadow.camera.fov = 360;
-// scene.add(new THREE.CameraHelper(sunlight.shadow.camera));
-
 scene.add(sunlight);
 
+//Setup Global Light
+const ambientlight = new THREE.AmbientLight(0xffffff); // soft white light
+ambientlight.intensity = 0;
+scene.add(ambientlight);
 
 //Texture Loader
 const textureLoader = new THREE.TextureLoader();
 
 //Load all textures
 const textureSun = new THREE.MeshBasicMaterial({
-    map: textureLoader.load('./Assets/Textures/Sun/sun-color.jpg')
+    map: textureLoader.load('./Assets/Textures/Sun/sun-color2.jpg'),
+    emissive: 0xffe138,
+    emissiveIntensity: 1,
 })
 
 const textureMercury = new THREE.MeshStandardMaterial({
@@ -92,5 +84,7 @@ const textures = {
 }
 
 export {
-    textures
+    textures,
+    ambientlight,
+    sunlight
 }
