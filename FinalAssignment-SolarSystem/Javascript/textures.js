@@ -18,8 +18,6 @@ const textureLoader = new THREE.TextureLoader();
 //Load all textures
 const textureSun = new THREE.MeshBasicMaterial({
     map: textureLoader.load('./Assets/Textures/Sun/sun-color2.jpg'),
-    emissive: 0xffe138,
-    emissiveIntensity: 1,
 })
 
 const textureMercury = new THREE.MeshStandardMaterial({

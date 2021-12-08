@@ -20,15 +20,16 @@ const customzoom = {
     zoomfactor: .2,
     min: .2,
     max: 400,
-    focus: solarsystem[0]
+    focus: solarsystem[0],
+    // target0: new THREE.Vector3(0, 0, 0)
 }
 customzoom.zoom0 = customzoom.zoom;
-
-// console.log(solarsystem[1].mesh.geometry.parameters.radius)
 
 //Update the zoom / Smooth Zoom
 let dirvector = new THREE.Vector3(0, 0, 0);
 function UpdateZoomControls() {
+    // customzoom.target0.lerpVectors(customzoom.target0, customzoom.focus.mesh.position, .1);
+    // ocontrols.target.copy(customzoom.target0);
     ocontrols.target.copy(customzoom.focus.mesh.position);
     customzoom.zoom0 = lerp(customzoom.zoom0, customzoom.zoom, customzoom.zoomfactor);
 

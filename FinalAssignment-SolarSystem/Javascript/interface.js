@@ -68,7 +68,6 @@ function updateLabels() {
 
     }
 }
-
 //Debug UI
 function updateDebug() {
     debuggui.innerText = `
@@ -82,7 +81,6 @@ function updateDebug() {
 
 
 //###HANDLE INTERACTIVITY###
-
 //Add event listeners
 for (var i in planetLabels) {
     let label = planetLabels[i];
