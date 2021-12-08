@@ -7,6 +7,7 @@ import { ocontrols, customzoom } from './orbitcontrols.js';
 const dynamicgui = document.querySelector("#dynamicgui");
 const debuggui = document.querySelector("#debuggui");
 const planetinfo = document.querySelector("#planetinfo");
+const suninfo = document.querySelector("#suninfo");
 const body = document.body;
 const templateplanetlabel = document.querySelector("#template-planetlabel");
 
@@ -105,10 +106,11 @@ function focusPlanet(e, ele) {
     customzoom.focus = solarsystem[index]
 
     //Update Static GUI
-    planetinfo.style.visibility = 'visible';
+    // planetinfo.style.visibility = 'visible';
     let info = solarsystem[index].info;
     //Planet Case
     if (index != 0) {
+        planetinfo.classList.add("show-me");
         planetinfo.querySelector(".infoplanetname").innerHTML = solarsystem[index].name;
         planetinfo.querySelector(".planetclass").innerText = info.infoType;
         planetinfo.querySelector(".planetimage").src = info.infoImage;
@@ -117,13 +119,16 @@ function focusPlanet(e, ele) {
         planetinfo.querySelector(".infodistance").innerText = info.infoOrbitRadius;
         planetinfo.querySelector(".infomoons").innerText = info.infoMoons;
         planetinfo.querySelector(".infodiameter").innerText = info.infoDiameter;
+        suninfo.classList.remove("show-me");
+    } else {
+        suninfo.classList.add("show-me");
     }
 }
-
 function unfocusPlanet() {
     customzoom.zoom = 24;
     customzoom.focus = solarsystem[0];
-    planetinfo.style.visibility = 'hidden';
+    planetinfo.classList.remove("show-me");
+    suninfo.classList.remove("show-me");
 }
 
 

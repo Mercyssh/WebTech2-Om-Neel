@@ -34,7 +34,7 @@
     <!-- Static Gui, such as buttons and other setting related controls -->
     <div id="staticgui">
         <!-- style="visibility:hidden" -->
-        <div id="planetinfo" style="visibility:hidden">
+        <div id="planetinfo" class="maininfocontainer hidden">
             <p class="infoplanetname">Earth</p>
             <p class="planetclass">Terrestrial Planet</p>
             <img src="Assets/Thumbnails/earth.png" alt="" class="planetimage" />
@@ -60,20 +60,45 @@
             </div>
 
         </div>
-    </div>
 
-    <!-- Import Modules -->
-    <script src="Javascript/threecore.js" type="module"></script>
-    <script src="Javascript/orbitcontrols.js" type="module"></script>
-    <script src="Javascript/helpers.js" type="module"></script>
-    <!-- <script src="Javascript/transformcontrols.js" type="module"></script> -->
+        <div id="suninfo" class="maininfocontainer hidden">
+            <p class="infosunname">Sun</p>
+            <p class="planetclass">Yellow Dwarf Star</p>
+            <img src="Assets/Thumbnails/sun.png" alt="" class="planetimage" />
+            <p class="planetdescription">The Sun is a yellow dwarf star, a hot ball of glowing gases at the heart of our
+                solar system. Its gravity holds everything from the biggest planets to tiny debris in its orbit.</p>
+            <div class="planetinfogrid">
+                <div class="infocontainer">
+                    <p class="infolabel">Length of Year</p>
+                    <p class="infoyearlength">230 Million Earth Years</p>
+                </div>
+                <div class="infocontainer">
+                    <p class="infolabel">Diameter</p>
+                    <p class="infodistance">1.3927 Million km</p>
+                </div>
+                <div class="infocontainer">
+                    <p class="infolabel">Surface Temperature</p>
+                    <p class="infomoons">5,778 K</p>
+                </div>
+                <div class="infocontainer">
+                    <p class="infolabel">Core Temperature</p>
+                    <p class="infodiameter">15000255 K</p>
+                </div>
+            </div>
+        </div>
 
-    <!-- Import Objects and UI -->
-    <script src="Javascript/objects.js" type="module"></script>
-    <script src="Javascript/interface.js" type="module"></script>
+        <!-- Import Modules -->
+        <script src="Javascript/threecore.js" type="module"></script>
+        <script src="Javascript/orbitcontrols.js" type="module"></script>
+        <script src="Javascript/helpers.js" type="module"></script>
+        <!-- <script src="Javascript/transformcontrols.js" type="module"></script> -->
 
-    <!-- Animatation Loop -->
-    <script src="Javascript/animate.js" type="module"></script>
+        <!-- Import Objects and UI -->
+        <script src="Javascript/objects.js" type="module"></script>
+        <script src="Javascript/interface.js" type="module"></script>
+
+        <!-- Animatation Loop -->
+        <script src="Javascript/animate.js" type="module"></script>
 
 </body>
 

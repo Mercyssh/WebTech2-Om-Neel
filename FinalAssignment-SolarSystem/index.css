@@ -6,6 +6,15 @@
     user-select: none;
 }
 
+.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.show-me {
+    opacity: 1;
+}
+
 #debuggui{
     position: absolute;
     right: 0;
@@ -54,7 +63,7 @@
 #staticgui *{
     font-family: 'Lato', 'Calibri', sans-serif;
 }
-#planetinfo{
+.maininfocontainer{
     color:white;
     font-weight: 200;
     position: absolute;

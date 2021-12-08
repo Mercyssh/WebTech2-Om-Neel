@@ -19,7 +19,7 @@ const solarsystem = [
         info: {
             infoImage: "Assets/Thumbnails/earth.png",
             infoType: "Yellow Dwarf Star",
-            infoDescription: "The Sun is a yellow dwarf star, a hot ball of glowing gases at the heart of our solar system. Its gravity holds everything from the biggest planets to tiny debris in its orbit.            ",
+            infoDescription: "The Sun is a yellow dwarf star, a hot ball of glowing gases at the heart of our solar system. Its gravity holds everything from the biggest planets to tiny debris in its orbit.",
             infoYearLength: "230 Million Earth Years",
             infoTemperature: "5,778 K",
         },
