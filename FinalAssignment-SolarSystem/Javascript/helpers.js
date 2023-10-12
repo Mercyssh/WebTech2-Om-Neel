@@ -1,5 +1,5 @@
 // This file includes New custom functions that can be used across the codebase
-import * as THREE from 'https://cdn.skypack.dev/three';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.module.js';
 import { scene } from './threecore.js';
 
 //Convert degrees to radians

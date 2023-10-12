@@ -1,5 +1,5 @@
 //Handles the Animation Loop
-import * as THREE from 'https://cdn.skypack.dev/three';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.module.js';
 import { scene, renderer, camera } from './threecore.js'
 import { solarsystem } from './objects.js';
 import { radians, getVectorByMagnitude } from './helpers.js';

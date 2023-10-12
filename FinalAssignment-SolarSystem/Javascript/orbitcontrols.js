@@ -1,7 +1,8 @@
 //Import Stuff
-import * as THREE from 'https://cdn.skypack.dev/three';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/0.157.0/three.module.js';
 import { camera, renderer } from './threecore.js';
-import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from 'https://cdn.skypack.dev/three/examples/jsm/controls/OrbitControls.js';
+import { OrbitControls } from 'https://unpkg.com/three@0.119.1/examples/jsm/controls/OrbitControls.js';
 import { getVectorByMagnitude, lerp } from './helpers.js';
 import { solarsystem } from './objects.js';
 
